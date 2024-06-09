@@ -1,0 +1,53 @@
+@use "./global/variables.scss";
+@use "./global/mixins.scss";
+
+.social__list {
+  @include mixins.list-reset;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.social__link {
+  display: grid;
+  place-content: center;
+  transition: background-color 0.3s linear;
+
+  &::before {
+    content: "";
+    width: 40px;
+    height: 40px;
+    background-color: variables.$text-disabled;
+    background-size: contain;
+    transition: background-color 0.3s linear;
+  }
+}
+
+.social__link--vk::before {
+  mask-image: url("../../images/icons/stack.svg#vk");
+}
+
+.social__link--pinterest::before {
+  mask-image: url("../../images/icons/stack.svg#pinterest");
+}
+
+.social__link--ok::before {
+  mask-image: url("../../images/icons/stack.svg#ok");
+}
+
+.social__link:hover,
+.social__link:focus {
+  background-color: variables.$color-secondary;
+
+  &::before {
+    background-color: variables.$color-primary;
+  }
+}
+
+.social__link:active {
+  background-color: variables.$color-primary-opacity;
+
+  &::before {
+    background-color: variables.$color-primary-darker;
+  }
+}
