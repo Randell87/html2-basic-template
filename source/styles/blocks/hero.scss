@@ -1,0 +1,10 @@
+@use "./global/variables.scss";
+
+.hero {
+  --product-color: #f3ebe1;
+  background-color: var(--product-color);
+
+  @media (min-width: variables.$tablet-width) and (max-width: 1439px) {
+    background-image: linear-gradient(var(--product-color) 77.3%, #ffffff 77.3%);
+  }
+}
