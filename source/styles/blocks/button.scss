@@ -1,0 +1,58 @@
+@use "./global/variables.scss";
+
+.button {
+  display: grid;
+  place-content: center;
+  padding: 8px 20px;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 24px;
+  text-decoration: none;
+  color: variables.$text-secondary;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s linear;
+
+  &:hover,
+  &:focus {
+    background-color: variables.$color-primary-lighter;
+  }
+
+  &:active {
+    background-color: variables.$color-primary-darker;
+  }
+
+  &--primary {
+    background-color: variables.$color-primary;
+  }
+
+  &--secondary {
+    color: variables.$color-primary;
+    background-color: variables.$color-light;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: variables.$text-secondary;
+    }
+
+    &:disabled,
+    &--disabled {
+      background-color: variables.$color-disabled;
+      color: variables.$text-secondary;
+    }
+  }
+
+  &:disabled,
+  &--disabled {
+    background-color: variables.$color-disabled;
+    cursor: not-allowed;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: variables.$color-disabled;
+    }
+  }
+}
