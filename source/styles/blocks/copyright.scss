@@ -1,0 +1,43 @@
+@use "./global/variables.scss";
+
+.copyright {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  padding: 20px 37px 30px;
+  text-decoration: none;
+  color: variables.$text-disabled;
+
+  @media (min-width: variables.$tablet-width) {
+    padding-top: 30px;
+    padding-bottom: 40px;
+  }
+
+  @media (min-width: variables.$desktop-width) {
+    padding-top: 20px;
+  }
+}
+
+.copyright:hover :is(.copyright__link, .copyright__icon),
+.copyright:focus :is(.copyright__link, .copyright__icon) {
+  color: variables.$text-accent;
+}
+
+.copyright:active :is(.copyright__link, .copyright__icon) {
+  color: variables.$color-primary-darker;
+}
+
+.copyright__text {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.copyright__icon {
+  width: 12px;
+  height: 16px;
+  transition: color 0.3s linear;
+}
+
+.copyright__link {
+  transition: color 0.3s linear;
+}
