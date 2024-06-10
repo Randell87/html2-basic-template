@@ -1,0 +1,103 @@
+@use "./global/variables.scss";
+@use "./global/mixins.scss";
+
+.filter {
+  display: grid;
+  gap: 30px;
+  padding: 20px 0 40px;
+
+  @media (min-width: variables.$tablet-width) and (max-width: 1439px) {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 30px;
+    row-gap: 40px;
+    padding: 0;
+    padding-bottom: 40px;
+  }
+
+  @media (min-width: variables.$desktop-width) {
+    padding: 0;
+    padding-top: 5px;
+  }
+}
+
+.filter__fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+  text-align: left;
+}
+
+.filter__legend {
+  margin-bottom: 20px;
+  padding: 0;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+}
+
+.filter__range {
+  margin-top: 10px;
+  margin-bottom: 35px;
+  cursor: pointer;
+
+  @media (min-width: variables.$tablet-width) {
+    margin-top: 11px;
+    margin-bottom: 31px;
+  }
+
+  @media (min-width: variables.$desktop-width) {
+    margin-top: 10px;
+    margin-bottom: 33px;
+  }
+}
+
+.filter__fields-wrapper {
+  display: grid;
+  grid-template-columns: 118px 1fr 118px;
+
+  @media (min-width: variables.$tablet-width) {
+    grid-template-columns: 87px 1fr 87px;
+  }
+
+  @media (min-width: variables.$desktop-width) {
+    grid-template-columns: 134px 1fr 134px;
+  }
+}
+
+.filter__dash {
+  width: 8px;
+  height: 2px;
+  margin: auto;
+  background-color: variables.$text-disabled;
+}
+
+.filter__list {
+  @include mixins.list-reset;
+  display: grid;
+  gap: 20px;
+}
+
+.filter__buttons {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  margin: 0;
+
+  @media (min-width: variables.$tablet-width) {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 20px;
+  }
+
+  @media (min-width: variables.$desktop-width) {
+    justify-content: space-between;
+    padding-top: 10px;
+  }
+}
+
+.filter__button {
+  @media (min-width: variables.$desktop-width) {
+    width: 100%;
+  }
+}
