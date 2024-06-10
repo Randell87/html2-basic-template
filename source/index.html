@@ -168,35 +168,44 @@
           <fieldset class="filter__fieldset filter__price">
             <legend class="filter__legend">Цена</legend>
             <div class="filter__range" id="slider"></div>
-            <label class="visually-hidden" for="min-price">Минимальная цена.</label>
-            <input class="filter__range-input" type="number" id="min-price" placeholder="0">
-            <label class="visually-hidden" for="max-price">Максимальная цена.</label>
-            <input class="filter__range-input" type="number" id="max-price" placeholder="900">
+            <div class="filter__fields-wrapper">
+              <label class="visually-hidden" for="min-price">Минимальная цена.</label>
+              <input class="filter__range-input filter__range-input--min" type="number" id="min-price" placeholder="0"
+                min="0">
+              <span class="filter__dash"></span>
+              <label class="visually-hidden" for="max-price">Максимальная цена.</label>
+              <input class="filter__range-input filter__range-input--max" type="number" id="max-price" placeholder="900"
+                min="0" value="900">
+            </div>
           </fieldset>
           <fieldset class="filter__fieldset filter__milk-availability">
             <legend class="filter__legend">Наличие молока</legend>
             <ul class="filter__list">
               <li class="filter__item">
-                <label class="filter__field-wrapper" for="no-matter">
-                  <input class="filter__checkbox" type="checkbox" name="no-matter" id="no-matter" checked>
+                <label class="filter__field-wrapper">
+                  <input class="filter__radio" type="radio" name="milk-availability" value="no-matter" id="no-matter"
+                    checked>
                   <span class="filter__label">Неважно</span>
                 </label>
               </li>
               <li class="filter__item">
-                <label class="filter__field-wrapper" for="animal-only">
-                  <input class="filter__checkbox" type="checkbox" name="animal-only" id="animal-only">
+                <label class="filter__field-wrapper">
+                  <input class="filter__radio" type="radio" name="milk-availability" value="animal-only"
+                    id="animal-only">
                   <span class="filter__label">Только животное</span>
                 </label>
               </li>
               <li class="filter__item">
-                <label class="filter__field-wrapper" for="vegetable-only">
-                  <input class="filter__checkbox" type="checkbox" name="vegetable-only" id="vegetable-only">
+                <label class="filter__field-wrapper">
+                  <input class="filter__radio" type="radio" name="milk-availability" value="vegetable-only"
+                    id="vegetable-only">
                   <span class="filter__label">Только растительное</span>
                 </label>
               </li>
               <li class="filter__item">
-                <label class="filter__field-wrapper" for="no-milk">
-                  <input class="filter__checkbox" type="checkbox" name="no-milk" id="no-milk" disabled>
+                <label class="filter__field-wrapper">
+                  <input class="filter__radio" type="radio" name="milk-availability" value="no-milk" id="no-milk"
+                    disabled>
                   <span class="filter__label">Без молока</span>
                 </label>
               </li>
@@ -237,8 +246,10 @@
               </li>
             </ul>
           </fieldset>
-          <button class="filter__send-button button button--primary" type="submit">Применить</button>
-          <button class="filter__reset-button button button--secondary" type="reset">Сбросить</button>
+          <p class="filter__buttons">
+            <button class="filter__send-button button button--primary" type="submit">Применить</button>
+            <button class="filter__reset-button button button--secondary" type="reset">Сбросить</button>
+          </p>
         </form>
         <div class="catalog__sorting sorting">
           <span class="sorting__text">Сортировка:</span>
