@@ -8,7 +8,7 @@
     <link rel="icon" href="favicons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="favicons/icon-apple.png">
     <link rel="manifest" href="manifest.webmanifest">
-    
+
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="preload" href="fonts/montserrat-regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
     <link rel="preload" href="fonts/montserrat-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
@@ -245,8 +245,8 @@
           </p>
         </form>
         <div class="catalog__sorting sorting">
-          <span class="sorting__text">Сортировка:</span>
-          <select class="sorting__select select" aria-label="Сортировка напитков.">
+          <label class="sorting__text" for="drinks-sorting">Сортировка:</label>
+          <select class="sorting__select select" name="drinks-sorting" id="drinks-sorting">
             <option class="select__option" value="default" selected>По умолчанию</option>
             <option class="select__option" value="popularity">По популярности</option>
             <option class="select__option" value="price-ascending">По цене (по возрастанию)</option>
@@ -258,14 +258,14 @@
             <a class="card__title-link" href="#">
               <h3 class="card__title">Декаф Флэт Уайт</h3>
             </a>
-            <a class="card__image-link" href="#">
+            <div class="card__image-wrapper">
               <picture>
                 <source type="image/webp" srcset="images/product-1@1x.webp 1x, images/product-1@2x.webp 2x" width="130"
                   height="188">
                 <img class="card__image" src="images/product-1@1x.png" srcset="images/product-1@2x.png 2x" alt=""
                   width="130" height="188">
               </picture>
-            </a>
+            </div>
             <p class="card__description">Кофе без кофеина из Эфиопии с&nbsp;натуральным фермерским молоком</p>
             <p class="card__footer">
               <span class="price">225₽</span>
@@ -276,14 +276,14 @@
             <a class="card__title-link" href="#">
               <h3 class="card__title">Декаф Флэт Уайт</h3>
             </a>
-            <a class="card__image-link" href="#">
+            <div class="card__image-wrapper">
               <picture>
                 <source type="image/webp" srcset="images/product-2@1x.webp 1x, images/product-2@2x.webp 2x" width="130"
                   height="188">
                 <img class="card__image" src="images/product-2@1x.png" srcset="images/product-2@2x.png 2x" alt=""
                   width="130" height="188">
               </picture>
-            </a>
+            </div>
             <p class="card__description">Кофе без кофеина из Эфиопии с&nbsp;натуральным фермерским молоком</p>
             <p class="card__footer">
               <span class="price">225₽</span>
@@ -294,14 +294,14 @@
             <a class="card__title-link" href="#">
               <h3 class="card__title">Декаф Флэт Уайт</h3>
             </a>
-            <a class="card__image-link" href="#">
+            <div class="card__image-wrapper">
               <picture>
                 <source type="image/webp" srcset="images/product-3@1x.webp 1x, images/product-3@2x.webp 2x" width="130"
                   height="188">
                 <img class="card__image" src="images/product-3@1x.png" srcset="images/product-3@2x.png 2x" alt=""
                   width="130" height="188">
               </picture>
-            </a>
+            </div>
             <p class="card__description">Кофе без кофеина из Эфиопии с&nbsp;натуральным фермерским молоком</p>
             <p class="card__footer">
               <span class="price">225₽</span>
@@ -312,14 +312,14 @@
             <a class="card__title-link" href="#">
               <h3 class="card__title">Декаф Флэт Уайт</h3>
             </a>
-            <a class="card__image-link" href="#">
+            <div class="card__image-wrapper">
               <picture>
                 <source type="image/webp" srcset="images/product-4@1x.webp 1x, images/product-4@2x.webp 2x" width="130"
                   height="188">
                 <img class="card__image" src="images/product-4@1x.png" srcset="images/product-4@2x.png 2x" alt=""
                   width="130" height="188">
               </picture>
-            </a>
+            </div>
             <p class="card__description">Кофе без кофеина из Эфиопии с&nbsp;натуральным фермерским молоком</p>
             <p class="card__footer">
               <span class="price">225₽</span>
@@ -330,14 +330,14 @@
             <a class="card__title-link" href="#">
               <h3 class="card__title">Декаф Флэт Уайт</h3>
             </a>
-            <a class="card__image-link" href="#">
+            <div class="card__image-wrapper">
               <picture>
                 <source type="image/webp" srcset="images/product-5@1x.webp 1x, images/product-5@2x.webp 2x" width="130"
                   height="188">
                 <img class="card__image" src="images/product-5@1x.png" srcset="images/product-5@2x.png 2x" alt=""
                   width="130" height="188">
               </picture>
-            </a>
+            </div>
             <p class="card__description">Кофе без кофеина из Эфиопии с&nbsp;натуральным фермерским молоком</p>
             <p class="card__footer">
               <span class="price">225₽</span>
@@ -348,14 +348,14 @@
             <a class="card__title-link" href="#">
               <h3 class="card__title">Декаф Флэт Уайт</h3>
             </a>
-            <a class="card__image-link" href="#">
+            <div class="card__image-wrapper">
               <picture>
                 <source type="image/webp" srcset="images/product-6@1x.webp 1x, images/product-6@2x.webp 2x" width="130"
                   height="188">
                 <img class="card__image" src="images/product-6@1x.png" srcset="images/product-6@2x.png 2x" alt=""
                   width="130" height="188">
               </picture>
-            </a>
+            </div>
             <p class="card__description">Кофе без кофеина из Эфиопии с&nbsp;натуральным фермерским молоком</p>
             <p class="card__footer">
               <span class="price">225₽</span>
