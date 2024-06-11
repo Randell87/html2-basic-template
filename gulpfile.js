@@ -2,12 +2,14 @@ import { readFileSync, rmSync } from 'node:fs';
 
 import gulp from 'gulp';
 import plumber from 'gulp-plumber';
+import { nunjucksCompile } from 'gulp-nunjucks';
 import htmlmin from 'gulp-htmlmin';
 import * as dartSass from 'sass';
 import gulpSass from 'gulp-sass';
 import postcss from 'gulp-postcss';
 import postUrl from 'postcss-url';
-import lightningcss from 'postcss-lightningcss';
+import autoprefixer from 'autoprefixer';
+import csso from 'postcss-csso';
 import { createGulpEsbuild } from 'gulp-esbuild';
 import browserslistToEsbuild from 'browserslist-to-esbuild';
 import sharp from 'gulp-sharp-responsive';
@@ -28,19 +30,21 @@ const PATHS_TO_STATIC = [
   `${PATH_TO_SOURCE}favicons/**/*.{png,svg}`,
   `${PATH_TO_SOURCE}vendor/**/*`,
   `${PATH_TO_SOURCE}images/**/*`,
+  `!${PATH_TO_SOURCE}images/icons/**/*`,
   `!${PATH_TO_SOURCE}**/README.md`,
 ];
 let isDevelopment = true;
 
 export function processMarkup () {
   return src(`${PATH_TO_SOURCE}**/*.html`)
+    .pipe(nunjucksCompile())
     .pipe(htmlmin({ collapseWhitespace: !isDevelopment }))
     .pipe(dest(PATH_TO_DIST))
     .pipe(server.stream());
 }
 
 export function lintBem () {
-  return src(`${PATH_TO_SOURCE}**/*.html`)
+  return src(`${PATH_TO_SOURCE}*.html`)
     .pipe(bemlinter());
 }
 
@@ -49,25 +53,9 @@ export function processStyles () {
     .pipe(plumber())
     .pipe(sass().on('error', sass.logError))
     .pipe(postcss([
-      postUrl([
-        {
-          filter: '**/*',
-          assetsPath: '../',
-        },
-        {
-          filter: '**/icons/**/*.svg',
-          url: (asset) => asset.url.replace(
-            /icons\/(.+?)\.svg$/,
-            (match, p1) => `icons/stack.svg#${p1.replace(/\//g, '_')}`
-          ),
-          multi: true,
-        },
-      ]),
-      lightningcss({
-        lightningcssOptions: {
-          minify: !isDevelopment,
-        },
-      })
+      postUrl({ assetsPath: '../' }),
+      autoprefixer(),
+      csso()
     ]))
     .pipe(dest(`${PATH_TO_DIST}styles`, { sourcemaps: isDevelopment }))
     .pipe(server.stream());
@@ -125,9 +113,9 @@ export function optimizeVector () {
 }
 
 export function createStack () {
-  return src(`${PATH_TO_SOURCE}icons/**/*.svg`)
+  return src(`${PATH_TO_SOURCE}images/icons/**/*.svg`)
     .pipe(stacksvg())
-    .pipe(dest(`${PATH_TO_DIST}icons`));
+    .pipe(dest(`${PATH_TO_DIST}images/icons`));
 }
 
 export function copyStatic () {
@@ -163,7 +151,7 @@ export function startServer () {
   watch(`${PATH_TO_SOURCE}**/*.{html,njk}`, series(processMarkup));
   watch(`${PATH_TO_SOURCE}styles/**/*.scss`, series(processStyles));
   watch(`${PATH_TO_SOURCE}scripts/**/*.js`, series(processScripts));
-  watch(`${PATH_TO_SOURCE}icons/**/*.svg`, series(createStack, reloadServer));
+  watch(`${PATH_TO_SOURCE}images/icons/**/*.svg`, series(createStack, reloadServer));
   watch(PATHS_TO_STATIC, series(reloadServer));
 }
 
