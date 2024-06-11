@@ -56,8 +56,10 @@
   color: variables.$text-accent;
 }
 
-.user-list__link:hover::before {
+.user-list__link:hover::before,
+.user-list__link:focus::before {
   background-color: variables.$text-accent;
+  color: variables.$text-accent;
 }
 
 .user-list__link:active {
@@ -74,6 +76,15 @@
 
 .user-list__capture {
   @media (max-width: 1439px) {
-    display: none;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
   }
 }
